@@ -956,9 +956,7 @@ def submit_feedback():
 
 @app.route('/')
 def index():
-    # You could pass data to the template here if needed
-    # For this example, we just render the static template
-    return render_template('dashboard.html')
+    return "Hello World"
 
 
 # --- Run the Flask App ---
