@@ -97,14 +97,13 @@ else:
 
 # --- Model Configuration ---
 # Choose a model appropriate for the task (multimodal if handling files)
-MODEL_NAME = "gemini-2.5-flash-preview-04-17" # Changed to 1.5 flash - good balance
-CHAT_MODEL = "gemini-2.0-flash-lite"
+MODEL_NAME = "gemini-2.5-flash" # Changed to 1.5 flash - good balance
 # Send a creative prompt to the LLM
 
 def call_gemini(prompt):
     prompt_parts = [types.Part.from_text(text=prompt)]
     response = client.models.generate_content(
-            model="gemini-2.0-flash-lite",
+            model=MODEL_NAME,
             contents=[types.Content(role="user", parts=prompt_parts)],
             # stream=False # Default is False, explicitly set if needed
         )
@@ -113,7 +112,7 @@ def call_gemini(prompt):
 def call_ama_gemini(prompt):
     prompt_parts = [types.Part.from_text(text=prompt)]
     response = client.models.generate_content(
-            model="gemini-2.0-flash-lite",
+            model=MODEL_NAME,
             contents=[types.Content(role="user", parts=prompt_parts)],
             # stream=False # Default is False, explicitly set if needed
         )
@@ -403,7 +402,7 @@ def solve_math():
         # For a single user turn, provide a list containing one Content object.
         # The 'parts' argument within Content takes the list of Part objects we built.
         response = client.models.generate_content(
-            model="gemini-2.5-flash-preview-04-17",
+            model=MODEL_NAME,
             contents=[types.Content(role="user", parts=prompt_parts)],
             # stream=False # Default is False, explicitly set if needed
         )
@@ -552,7 +551,7 @@ def check():
         # For a single user turn, provide a list containing one Content object.
         # The 'parts' argument within Content takes the list of Part objects we built.
         response = client.models.generate_content(
-            model="gemini-2.5-flash-preview-04-17",
+            model=MODEL_NAME,
             contents=[types.Content(role="user", parts=prompt_parts)],
             # stream=False # Default is False, explicitly set if needed
         )
@@ -782,7 +781,7 @@ def practice():
         # response = model.generate_content(prompt_parts)
 
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model=MODEL_NAME,
             contents=[types.Content(role="user", parts=prompt_parts)]
             # stream=False # Default is False, explicitly set if needed
         )
